@@ -1,9 +1,8 @@
 from fastapi import FastAPI, Response,status
 from fastapi.middleware.cors import CORSMiddleware
-import httpx
 import requests
 import uvicorn
-import helper
+import app.helper as helper
 
 
 
@@ -76,4 +75,4 @@ def get_user(number,res: Response):
 
 
 if __name__ == "__main__":
-    uvicorn.run('main:app',port=8000)
+    uvicorn.run('main:app',port=8000, host='0.0.0.0')
