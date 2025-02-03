@@ -37,18 +37,17 @@ def get_user(res:Response, number='',):
             "error": True,
         }
 
-
-    try:
-        headers = {'Accept': 'application/json'}
-        response = requests.get(f'http://numbersapi.com/{number}/math',headers=headers)
-        fun_fact = response._content
-        num = int(number)
+    if number.startswith('-'):
+        mynumber = f'-{number[1:]}'
+        num:int = mynumber
         odd_even = ''
         sum = helper.getSum(num)
         isArmstrong = helper.isArmStrong(num)
         even = helper.is_even(num)
         isPrime = helper.is_prime(num)
         isPerfect = helper.is_perfect(num)
+        fun_fact = helper.get_fun_fact(num)
+        
 
     
 
@@ -71,8 +70,40 @@ def get_user(res:Response, number='',):
                 
 
         }
-    except ValueError as e:
-        print(e)
+    
+    if number.isnumeric():
+        num = int(number)
+        odd_even = ''
+        sum = helper.getSum(num)
+        isArmstrong = helper.isArmStrong(num)
+        even = helper.is_even(num)
+        isPrime = helper.is_prime(num)
+        isPerfect = helper.is_perfect(num)
+        fun_fact = helper.get_fun_fact(num)
+
+    
+
+        if not even:
+            odd_even = "odd"
+        else:
+            odd_even = "even"
+
+        properties = ["armstrong",odd_even]
+        if not isArmstrong:
+            properties.remove("armstrong")
+            
+        return {
+                "number": number,
+                "is_prime": isPrime,
+                "is_perfect": isPerfect,
+                "properties": properties,
+                "digit_sum": sum,
+                "fun_fact" : fun_fact,
+                
+
+        }
+
+    if number.isalnum():
         res.status_code = 400
         return {
             "number": "alphabet",

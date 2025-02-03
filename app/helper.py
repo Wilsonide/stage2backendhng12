@@ -1,8 +1,12 @@
-
+import requests
 def isArmStrong(num: int):
     num_str = str(num)
-    num_len = len(num_str)
-    armstrong_sum = sum([int(digit) ** num_len for digit in num_str])
+    if num_str.startswith("-"):
+        my_num = num_str[1:]
+    else:
+        my_num = num_str
+    num_len = len(my_num)
+    armstrong_sum = sum([int(digit) ** num_len for digit in my_num])
 
     if armstrong_sum == num:
         return True
@@ -19,11 +23,20 @@ def is_even(num:int):
 def getSum(n): 
    
     sum = 0
-    for digit in str(n):  
+    for digit in str(n): 
+      if digit == '-' :
+          continue
       sum += int(digit)       
     return sum
+def get_fun_fact(num): 
+    headers = {'Accept': 'application/json'}
+    response = requests.get(f'http://numbersapi.com/{num}/math',headers=headers)
+    fun_fact = response._content 
+    return fun_fact
 
 def is_perfect(n):
+    if str(n).startswith('-'):
+        return False
     # Initialize a variable 'sum' to store the sum of factors of 'n'
     sum = 0
     
@@ -38,7 +51,9 @@ def is_perfect(n):
     return sum == n
 
 
-def is_prime(num: int):  
+def is_prime(num: int): 
+    if str(num).startswith('-'):
+        return False
     if num > 1:
   
     # Iterate from 2 to n // 2
