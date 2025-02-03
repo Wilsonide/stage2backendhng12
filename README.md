@@ -4,7 +4,7 @@
 
 this api takes a number and returns interesting mathematical properties about it, along with a fun fact.
 
-- Endpoint -  GET <<https://backend-stage0.vercel.app/user>>
+- Endpoint -  GET <<https://stage2backendhng12.onrender.com/api/classify-number>>
 
 ### Example Response
 
