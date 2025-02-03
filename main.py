@@ -27,7 +27,21 @@ def hello():
     return "Hello World"
 
 @app.get('/api/classify-number',status_code=status.HTTP_200_OK)
+def get_user(res: Response):
+    res.status_code = 400
+    return {
+        "number": "alphabet",
+        "error": True,
+    }
+
+@app.get('/api/classify-number',status_code=status.HTTP_200_OK)
 def get_user(number,res: Response):
+    if not number:
+        res.status_code = 400
+        return {
+            "number": "alphabet",
+            "error": True,
+        }
 
 
     try:
