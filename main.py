@@ -5,12 +5,6 @@ import requests
 import uvicorn
 import helper
 
-from pydantic import BaseModel
-
-class UserResponse(BaseModel):
-    number: int | str
-    class Config:
-        orm_mode = True
 
 
 def init():
