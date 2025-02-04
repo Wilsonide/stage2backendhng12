@@ -40,18 +40,19 @@ def get_user(res:Response, number='',):
     if number.startswith('-'):
         if '.' in number:
             return {
-            "number": "alphabet",
+            "number": "decimal",
             "error": True,
         }
-        mynumber = f'-{number[1:]}'
-        num:int = mynumber
+        """ mynumber = f'-{number[1:]}' """
+        mynumber = int(number)
+        num = abs(mynumber)
         odd_even = ''
         sum = helper.getSum(num)
         isArmstrong = helper.isArmStrong(num)
         even = helper.is_even(num)
         isPrime = helper.is_prime(num)
         isPerfect = helper.is_perfect(num)
-        fun_fact = helper.get_fun_fact(num)
+        fun_fact = helper.get_fun_fact(mynumber)
         
 
     
@@ -106,6 +107,13 @@ def get_user(res:Response, number='',):
                 "fun_fact" : fun_fact,
                 
 
+        }
+    
+    if "." in number:
+        res.status_code = 400
+        return {
+            "number": "decimal",
+            "error": True,
         }
 
     else:

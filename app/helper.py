@@ -1,12 +1,8 @@
 import requests
 def isArmStrong(num: int):
     num_str = str(num)
-    if num_str.startswith("-"):
-        my_num = num_str[1:]
-    else:
-        my_num = num_str
-    num_len = len(my_num)
-    armstrong_sum = sum([int(digit) ** num_len for digit in my_num])
+    num_len = len(num_str)
+    armstrong_sum = sum([int(digit) ** num_len for digit in num_str])
 
     if armstrong_sum == num:
         return True
@@ -21,11 +17,8 @@ def is_even(num:int):
     
 
 def getSum(n): 
-   
     sum = 0
     for digit in str(n): 
-      if digit == '-' :
-          continue
       sum += int(digit)       
     return sum
 def get_fun_fact(num): 
