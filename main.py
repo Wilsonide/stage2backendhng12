@@ -103,7 +103,7 @@ def get_user(res:Response, number='',):
 
         }
 
-    if number.isalnum():
+    else:
         res.status_code = 400
         return {
             "number": "alphabet",
