@@ -38,6 +38,11 @@ def get_user(res:Response, number='',):
         }
 
     if number.startswith('-'):
+        if '.' in number:
+            return {
+            "number": "alphabet",
+            "error": True,
+        }
         mynumber = f'-{number[1:]}'
         num:int = mynumber
         odd_even = ''
