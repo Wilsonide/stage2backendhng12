@@ -30,6 +30,8 @@ def get_fun_fact(num):
 def is_perfect(n):
     if str(n).startswith('-'):
         return False
+    if n == 0:
+        return False
     # Initialize a variable 'sum' to store the sum of factors of 'n'
     sum = 0
     
