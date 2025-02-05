@@ -43,39 +43,42 @@ def get_user(res:Response, number='',):
             "number": "decimal",
             "error": True,
         }
-        """ mynumber = f'-{number[1:]}' """
-        mynumber = int(number)
-        num = abs(mynumber)
-        odd_even = ''
-        sum = helper.getSum(num)
-        isArmstrong = helper.isArmStrong(num)
-        even = helper.is_even(num)
-        isPrime = helper.is_prime(num)
-        isPerfect = helper.is_perfect(num)
-        fun_fact = helper.get_fun_fact(mynumber)
+        mynumber = number[1:]
+        if not mynumber.isnumeric():
+             return {
+            "number": "alphabet",
+            "error": True,
+        }
+        else:
+            num = abs(int(number))
+            odd_even = ''
+            sum = helper.getSum(num)
+            isArmstrong = helper.isArmStrong(num)
+            even = helper.is_even(num)
+            isPrime = helper.is_prime(num)
+            isPerfect = helper.is_perfect(num)
+            """ fun_fact = helper.get_fun_fact(mynumber) """
         
 
-    
+            if not even:
+                odd_even = "odd"
+            else:
+                odd_even = "even"
 
-        if not even:
-            odd_even = "odd"
-        else:
-            odd_even = "even"
-
-        properties = ["armstrong",odd_even]
-        if not isArmstrong:
-            properties.remove("armstrong")
-            
-        return {
-                "number": number,
-                "is_prime": isPrime,
-                "is_perfect": isPerfect,
-                "properties": properties,
-                "digit_sum": sum,
-                "fun_fact" : fun_fact,
+            properties = ["armstrong",odd_even]
+            if not isArmstrong:
+                properties.remove("armstrong")
                 
+            return {
+                    "number": number,
+                    "is_prime": isPrime,
+                    "is_perfect": isPerfect,
+                    "properties": properties,
+                    "digit_sum": sum,
+                    "fun_fact" : 'fun_fact',
+                    
 
-        }
+            }
     
     if number.isnumeric():
         num = int(number)
@@ -85,7 +88,7 @@ def get_user(res:Response, number='',):
         even = helper.is_even(num)
         isPrime = helper.is_prime(num)
         isPerfect = helper.is_perfect(num)
-        fun_fact = helper.get_fun_fact(num)
+        """ fun_fact = helper.get_fun_fact(num) """
 
     
 
@@ -104,7 +107,7 @@ def get_user(res:Response, number='',):
                 "is_perfect": isPerfect,
                 "properties": properties,
                 "digit_sum": sum,
-                "fun_fact" : fun_fact,
+                "fun_fact" : 'fun_fact',
                 
 
         }
