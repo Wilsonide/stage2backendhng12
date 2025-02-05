@@ -57,7 +57,7 @@ def get_user(res:Response, number='',):
             even = helper.is_even(num)
             isPrime = helper.is_prime(num)
             isPerfect = helper.is_perfect(num)
-            """ fun_fact = helper.get_fun_fact(mynumber) """
+            fun_fact = helper.get_fun_fact(mynumber)
         
 
             if not even:
@@ -75,7 +75,7 @@ def get_user(res:Response, number='',):
                     "is_perfect": isPerfect,
                     "properties": properties,
                     "digit_sum": sum,
-                    "fun_fact" : 'fun_fact',
+                    "fun_fact" : fun_fact,
                     
 
             }
@@ -88,7 +88,7 @@ def get_user(res:Response, number='',):
         even = helper.is_even(num)
         isPrime = helper.is_prime(num)
         isPerfect = helper.is_perfect(num)
-        """ fun_fact = helper.get_fun_fact(num) """
+        fun_fact = helper.get_fun_fact(num)
 
     
 
@@ -107,7 +107,7 @@ def get_user(res:Response, number='',):
                 "is_perfect": isPerfect,
                 "properties": properties,
                 "digit_sum": sum,
-                "fun_fact" : 'fun_fact',
+                "fun_fact" : fun_fact,
                 
 
         }
