@@ -40,7 +40,7 @@ def get_user(res:Response, number='',):
     if number.startswith('-'):
         if '.' in number:
             return {
-            "number": "decimal",
+            "number": "alphabet",
             "error": True,
         }
         mynumber = number[1:]
@@ -115,7 +115,7 @@ def get_user(res:Response, number='',):
     if "." in number:
         res.status_code = 400
         return {
-            "number": "decimal",
+            "number": "alphabet",
             "error": True,
         }
 
