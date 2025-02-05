@@ -57,7 +57,7 @@ def get_user(res:Response, number='',):
             even = helper.is_even(num)
             isPrime = helper.is_prime(num)
             isPerfect = helper.is_perfect(num)
-            fun_fact = helper.get_fun_fact(mynumber)
+            fun_fact = helper.get_fun_fact(number)
         
 
             if not even:
